@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sweet Cake Maker 🎂</title>
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  font-family:Arial,sans-serif;
+  background:linear-gradient(135deg,#ffe0ee,#fff1d8,#e9dcff);
+  color:#57264a;min-height:100vh;padding:16px;
+}
+.game{max-width:950px;margin:auto}
+header{
+  background:linear-gradient(100deg,#ff5b9c,#ff91b9);
+  color:white;padding:20px;border-radius:22px;
+  display:flex;justify-content:space-between;
+  align-items:center;gap:10px;flex-wrap:wrap;
+  box-shadow:0 8px 20px #d65c8b30;
+}
+h1{font-size:clamp(23px,5vw,36px)}
+.stats{display:flex;gap:12px;flex-wrap:wrap}
+.stat{background:#ffffff35;padding:10px 13px;border-radius:12px}
+.panel{
+  margin-top:16px;background:#ffffffd9;
+  border:2px solid white;border-radius:22px;
+  padding:18px;box-shadow:0 8px 24px #ad6d9130;
+}
+h2{font-size:20px;margin-bottom:12px}
+.order{
+  background:#fff0f7;border:2px dashed #ff8db8;
+  border-radius:16px;padding:14px;text-align:center;
+  margin-bottom:15px;line-height:1.8;
+}
+.kitchen{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:15px;align-items:center;
+}
+.cake-area{
+  min-height:265px;border-radius:18px;
+  background:linear-gradient(#fff4fa,#ffe0ee);
+  display:flex;flex-direction:column;
+  justify-content:center;align-items:center;
+  position:relative;overflow:hidden;padding:15px;
+}
+.sparkle{position:absolute;top:12px;left:15px;font-size:22px}
+.cake{
+  position:relative;width:190px;height:145px;
+  margin-top:25px;display:flex;flex-direction:column;
+  align-items:center;justify-content:flex-end;
+  animation:pop .5s ease;
+}
+@keyframes pop{
+  from{transform:scale(.6);opacity:.3}
+  to{transform:scale(1);opacity:1}
+}
+.layer{
+  width:180px;height:43px;border-radius:10px 10px 15px 15px;
+  border-bottom:7px solid #d18a55;
+  background:#e9a56d;position:relative;
+}
+.layer:nth-child(2){
+  width:155px;background:#f1bc85;
+  border-bottom-color:#d99962;
+}
+.icing{
+  position:absolute;top:0;left:0;width:100%;height:15px;
+  border-radius:10px 10px 50% 50%;
+  background:#ff80bb;
+}
+.topping{
+  position:absolute;top:-24px;left:0;width:100%;
+  text-align:center;font-size:27px;letter-spacing:3px;
+}
+.candles{position:absolute;top:-52px;font-size:28px}
+.base{font-size:12px;margin-top:12px;color:#a35c82}
+.controls{display:flex;flex-direction:column;gap:10px}
+.group{background:#fff7fb;border-radius:14px;padding:11px}
+.group h3{font-size:14px;margin-bottom:8px}
+.choices{display:flex;gap:7px;flex-wrap:wrap}
+.choice{
+  border:2px solid #f5c5d9;background:white;
+  border-radius:11px;padding:9px;cursor:pointer;
+  font-size:14px;transition:.2s;
+}
+.choice:hover,.choice.active{
+  background:#ffe0ee;border-color:#ff4d98;
+  transform:translateY(-2px);
+}
+button{font-family:inherit}
+.actions{display:flex;gap:10px;margin-top:15px;flex-wrap:wrap}
+.action{
+  flex:1;min-width:120px;border:0;border-radius:13px;
+  padding:14px 10px;font-size:15px;font-weight:bold;
+  cursor:pointer;transition:.2s;
+}
+.action:hover{transform:translateY(-2px);filter:brightness(.97)}
+.bake{background:#ffc66e;color:#683b1c}
+.serve{background:#ff579a;color:white}
+.reset{background:#eadcff;color:#623d87}
+#message{
+  text-align:center;min-height:28px;margin-top:13px;
+  font-weight:bold;line-height:1.5;
+}
+footer{text-align:center;padding:18px 5px;color:#915a7c;font-size:13px}
+@media(max-width:600px){
+  body{padding:9px}
+  .panel{padding:12px}
+  .kitchen{grid-template-columns:1fr}
+  .cake-area{min-height:235px}
+  .controls{display:grid;grid-template-columns:1fr 1fr}
+  .group{min-width:0}
+  .choice{padding:8px;font-size:13px}
+  .stat{padding:8px;font-size:12px}
+}
+</style>
+</head>
+
+<body>
+<div class="game">
+<header>
+  <div>
+    <h1>🎂 Sweet Cake Maker</h1>
+    <p>Make it cute, bake it sweet!</p>
+  </div>
+  <div class="stats">
+    <div class="stat">⭐ Score: <b id="score">0</b></div>
+    <div class="stat">❤️ Lives: <b id="lives">3</b></div>
+    <div class="stat">⏱️ <b id="time">90</b>s</div>
+  </div>
+</header>
+
+<section class="panel">
+  <div class="order">
+    <h2>🧁 Customer's Order</h2>
+    <div id="orderText">Make a strawberry cake with pink cream! 🍓</div>
+    <div>Orders completed: <b id="orders">0</b></div>
+  </div>
+
+  <div class="kitchen">
+    <div class="cake-area">
+      <div class="sparkle">✨ 🌸 ✨</div>
+      <div id="cake" class="cake">
+        <div class="candles" id="candles"></div>
+        <div class="layer">
+          <div class="icing" id="icing"></div>
+          <div class="topping" id="topping">🍓 🍓</div>
+        </div>
+        <div class="layer" id="bottomLayer"></div>
+      </div>
+      <div class="base">YOUR MASTERPIECE 💗</div>
+    </div>
+
+    <div class="controls">
+      <div class="group">
+        <h3>🍰 1. Cake Base</h3>
+        <div class="choices">
+          <button class="choice active" onclick="pick('base','chocolate',this)">🍫 Choco</button>
+          <button class="choice" onclick="pick('base','vanilla',this)">🍦 Vanilla</button>
+          <button class="choice" onclick="pick('base','strawberry',this)">🍓 Berry</button>
+        </div>
+      </div>
+
+      <div class="group">
+        <h3>🎨 2. Cream</h3>
+        <div class="choices">
+          <button class="choice active" onclick="pick('cream','pink',this)">💗 Pink</button>
+          <button class="choice" onclick="pick('cream','white',this)">🤍 White</button>
+          <button class="choice" onclick="pick('cream','choco',this)">🤎 Choco</button>
+        </div>
+      </div>
+
+      <div class="group">
+        <h3>🍓 3. Toppings</h3>
+        <div class="choices">
+          <button class="choice active" onclick="pick('topping','strawberry',this)">🍓 Berry</button>
+          <button class="choice" onclick="pick('topping','choco',this)">🍫 Choco</button>
+          <button class="choice" onclick="pick('topping','candy',this)">🍬 Candy</button>
+        </div>
+      </div>
+
+      <div class="group">
+        <h3>🕯️ 4. Decoration</h3>
+        <div class="choices">
+          <button class="choice active" onclick="pick('decor','candles',this)">🕯️ Candles</button>
+          <button class="choice" onclick="pick('decor','flowers',this)">🌸 Flowers</button>
+          <button class="choice" onclick="pick('decor','none',this)">✨ None</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="actions">
+    <button class="action bake" onclick="bakeCake()">🔥 Bake Cake</button>
+    <button class="action serve" onclick="serveCake()">🎁 Serve Customer</button>
+    <button class="action reset" onclick="restart()">🔄 Restart</button>
+  </div>
+
+  <div id="message" aria-live="polite">Choose your ingredients and bake your cake! 💕</div>
+</section>
+
+<footer>🌷 Sweet Cake Maker • Your little bakery adventure 🌷</footer>
+</div>
+
+<script>
+const initial = {
+  base:"chocolate",
+  cream:"pink",
+  topping:"strawberry",
+  decor:"candles"
+};
+
+let choice = {...initial};
+let score = 0;
+let lives = 3;
+let orders = 0;
+let time = 90;
+let baked = false;
+let finished = false;
+let currentOrder;
+let timer;
+
+const options = {
+  base:["chocolate","vanilla","strawberry"],
+  cream:["pink","white","choco"],
+  topping:["strawberry","choco","candy"],
+  decor:["candles","flowers","none"]
+};
+
+const recipes = [
+  {base:"chocolate",cream:"pink",topping:"strawberry",decor:"candles"},
+  {base:"vanilla",cream:"white",topping:"candy",decor:"flowers"},
+  {base:"strawberry",cream:"choco",topping:"choco",decor:"candles"},
+  {base:"vanilla",cream:"pink",topping:"strawberry",decor:"flowers"},
+  {base:"chocolate",cream:"white",topping:"candy",decor:"none"}
+];
+
+function pick(type,value,button){
+  if(finished)return;
+  choice[type]=value;
+  baked=false;
+
+  button.closest(".group").querySelectorAll(".choice")
+    .forEach(b=>b.classList.remove("active"));
+  button.classList.add("active");
+  drawCake();
+  show("Looking delicious! Keep decorating. ✨");
+}
+
+function drawCake(){
+  const colors={
+    chocolate:"#85503f",
+    vanilla:"#f5d39b",
+    strawberry:"#ff9ebd"
+  };
+  const creams={
+    pink:"#ff80bb",
+    white:"#fffaf1",
+    choco:"#75442f"
+  };
+  const toppings={
+    strawberry:"🍓 🍓",
+    choco:"🍫 🍫",
+    candy:"🍬 🍭"
+  };
+
+  document.getElementById("bottomLayer").style.background=
+    colors[choice.base];
+  document.getElementById("icing").style.background=
+    creams[choice.cream];
+  document.getElementById("topping").textContent=
+    toppings[choice.topping];
+
+  document.getElementById("candles").textContent=
+    choice.decor==="candles"?"🕯️ 🕯️ 🕯️":
+    choice.decor==="flowers"?"🌸 🌼 🌸":"";
+
+  const cake=document.getElementById("cake");
+  cake.style.animation="none";
+  void cake.offsetWidth;
+  cake.style.animation="pop .5s ease";
+}
+
+function bakeCake(){
+  if(finished)return;
+  baked=true;
+  show("🔥 Ding! Your cake is baked and ready to serve!");
+}
+
+function serveCake(){
+  if(finished)return;
+
+  if(!baked){
+    show("⚠️ Bake your cake first!");
+    return;
+  }
+
+  const correct=Object.keys(currentOrder).every(
+    key=>choice[key]===currentOrder[key]
+  );
+
+  if(correct){
+    score+=100;
+    orders++;
+    show("🎉 Perfect order! Customer is so happy! +100 points 💖");
+  }else{
+    lives--;
+    show("🙈 Not quite the requested cake! Try the next order.");
+  }
+
+  document.getElementById("score").textContent=score;
+  document.getElementById("lives").textContent=lives;
+  document.getElementById("orders").textContent=orders;
+
+  if(lives<=0){
+    endGame("💔 Game over! You ran out of lives.");
+    return;
+  }
+
+  if(orders>=5){
+    endGame("🏆 Amazing! You completed 5 orders!");
+    return;
+  }
+
+  nextOrder();
+}
+
+function nextOrder(){
+  currentOrder=recipes[Math.floor(Math.random()*recipes.length)];
+  const names={
+    base:{chocolate:"Chocolate",vanilla:"Vanilla",strawberry:"Strawberry"},
+    cream:{pink:"Pink",white:"White",choco:"Chocolate"},
+    topping:{strawberry:"Strawberry",choco:"Chocolate",candy:"Candy"},
+    decor:{candles:"Candles",flowers:"Flowers",none:"No decoration"}
+  };
+
+  document.getElementById("orderText").textContent=
+    names.base[currentOrder.base]+" cake with "+
+    names.cream[currentOrder.cream]+" cream, "+
+    names.topping[currentOrder.topping]+" toppings and "+
+    names.decor[currentOrder.decor]+"! 🎂";
+
+  choice={base:"chocolate",cream:"pink",topping:"strawberry",decor:"candles"};
+
+  document.querySelectorAll(".group").forEach((group,i)=>{
+    group.querySelectorAll(".choice").forEach((b,j)=>{
+      b.classList.toggle("active",
+        options[Object.keys(options)[i]][j]===
+        choice[Object.keys(options)[i]]);
+    });
+  });
+
+  baked=false;
+  drawCake();
+}
+
+function show(message){
+  document.getElementById("message").textContent=message;
+}
+
+function endGame(message){
+  finished=true;
+  clearInterval(timer);
+  show(message+" Final score: "+score+" ⭐");
+}
+
+function restart(){
+  clearInterval(timer);
+  score=0;lives=3;orders=0;time=90;
+  finished=false;baked=false;
+  document.getElementById("score").textContent=score;
+  document.getElementById("lives").textContent=lives;
+  document.getElementById("orders").textContent=orders;
+  document.getElementById("time").textContent=time;
+  nextOrder();
+  show("New game! Make your first cake. 🎂");
+
+  timer=setInterval(()=>{
+    if(finished)return;
+    time--;
+    document.getElementById("time").textContent=time;
+    if(time<=0)endGame("⏰ Time is up!");
+  },1000);
+}
+
+restart();
+</script>
+</body>
+</html>

@@ -1,0 +1,1500 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>VELOURA | Luxury Beauty Salon</title>
+
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    scroll-behavior:smooth;
+}
+
+:root{
+    --bg:#0c0a0c;
+    --card:#171318;
+    --gold:#d7ae68;
+    --pink:#e6b6c0;
+    --white:#fff;
+    --muted:#aaa0a5;
+    --cream:#f7efeb;
+    --dark:#21191c;
+}
+
+body{
+    font-family:"DM Sans",sans-serif;
+    background:var(--bg);
+    color:var(--white);
+    overflow-x:hidden;
+}
+
+h1,h2,h3{
+    font-family:"Playfair Display",serif;
+}
+
+a{
+    text-decoration:none;
+    color:inherit;
+}
+
+/* ================= HEADER ================= */
+
+header{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    z-index:999;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:18px 7%;
+    background:rgba(12,10,12,.82);
+    backdrop-filter:blur(18px);
+    border-bottom:1px solid rgba(215,174,104,.18);
+}
+
+.logo{
+    font-family:"Playfair Display",serif;
+    font-size:28px;
+    letter-spacing:4px;
+    color:var(--gold);
+}
+
+nav{
+    display:flex;
+    align-items:center;
+    gap:25px;
+}
+
+nav a{
+    font-size:12px;
+    letter-spacing:1px;
+    transition:.3s;
+}
+
+nav a:hover{
+    color:var(--gold);
+}
+
+.nav-btn{
+    padding:11px 18px;
+    border:1px solid var(--gold);
+    color:var(--gold);
+}
+
+.nav-btn:hover{
+    background:var(--gold);
+    color:#111;
+}
+
+.menu{
+    display:none;
+    background:none;
+    border:0;
+    color:var(--gold);
+    font-size:27px;
+    cursor:pointer;
+}
+
+/* ================= HERO ================= */
+
+.hero{
+    min-height:100vh;
+    position:relative;
+    display:flex;
+    align-items:center;
+    padding:140px 8% 90px;
+
+    background:
+    linear-gradient(90deg,
+    rgba(7,5,7,.95),
+    rgba(7,5,7,.63),
+    rgba(7,5,7,.20)),
+    url("https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=2000&q=90");
+
+    background-size:cover;
+    background-position:center;
+}
+
+.hero::before{
+    content:"";
+    position:absolute;
+    width:450px;
+    height:450px;
+    border-radius:50%;
+    background:rgba(215,174,104,.08);
+    filter:blur(70px);
+    right:5%;
+    top:15%;
+    animation:float 6s infinite alternate ease-in-out;
+}
+
+.hero-content{
+    max-width:700px;
+    position:relative;
+    z-index:2;
+    animation:heroIn 1.2s ease;
+}
+
+.tag{
+    color:var(--gold);
+    font-size:11px;
+    letter-spacing:5px;
+    text-transform:uppercase;
+    margin-bottom:22px;
+}
+
+.hero h1{
+    font-size:clamp(52px,8vw,95px);
+    font-weight:400;
+    line-height:1.05;
+}
+
+.hero h1 span{
+    color:var(--pink);
+    font-style:italic;
+}
+
+.hero p{
+    max-width:480px;
+    margin:28px 0;
+    line-height:1.9;
+    color:#d3c9ce;
+    font-size:14px;
+}
+
+.main-btn{
+    display:inline-block;
+    padding:15px 28px;
+    border:1px solid var(--gold);
+    color:var(--gold);
+    font-size:12px;
+    letter-spacing:1.5px;
+    transition:.4s;
+}
+
+.main-btn:hover{
+    background:var(--gold);
+    color:#111;
+    transform:translateY(-4px);
+    box-shadow:0 12px 30px rgba(215,174,104,.2);
+}
+
+.hero-info{
+    position:absolute;
+    bottom:35px;
+    left:8%;
+    color:#9f9299;
+    font-size:10px;
+    letter-spacing:3px;
+}
+
+/* ================= SECTIONS ================= */
+
+section{
+    padding:110px 8%;
+}
+
+.heading{
+    text-align:center;
+    margin-bottom:60px;
+}
+
+.heading span{
+    color:var(--gold);
+    font-size:11px;
+    letter-spacing:4px;
+}
+
+.heading h2{
+    font-size:52px;
+    font-weight:400;
+    margin-top:13px;
+}
+
+/* ================= ABOUT ================= */
+
+.about{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:70px;
+    align-items:center;
+    background:var(--cream);
+    color:#21191c;
+}
+
+.about-img{
+    height:570px;
+    position:relative;
+    background:url("https://images.unsplash.com/photo-1521590832167-7bcbfaa6381f?auto=format&fit=crop&w=1000&q=90") center/cover;
+}
+
+.about-img::after{
+    content:"";
+    position:absolute;
+    inset:18px -18px -18px 18px;
+    border:1px solid #b38a4e;
+}
+
+.about-text .tag{
+    margin-bottom:15px;
+}
+
+.about-text h2{
+    font-size:52px;
+    line-height:1.15;
+    font-weight:400;
+}
+
+.about-text p{
+    color:#665b5d;
+    font-size:14px;
+    line-height:1.9;
+    margin:25px 0;
+}
+
+/* ================= SERVICES ================= */
+
+.services{
+    background:#121015;
+}
+
+.service-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:24px;
+}
+
+.service-card{
+    background:var(--card);
+    border:1px solid rgba(215,174,104,.15);
+    transition:.5s;
+    overflow:hidden;
+}
+
+.service-card:hover{
+    transform:translateY(-10px);
+    border-color:var(--gold);
+    box-shadow:0 20px 50px rgba(0,0,0,.35);
+}
+
+.service-img{
+    height:260px;
+    overflow:hidden;
+}
+
+.service-img img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    transition:.7s;
+}
+
+.service-card:hover img{
+    transform:scale(1.1);
+}
+
+.service-body{
+    padding:27px;
+}
+
+.service-body h3{
+    color:var(--pink);
+    font-size:25px;
+    font-weight:400;
+}
+
+.service-body p{
+    color:var(--muted);
+    font-size:13px;
+    line-height:1.8;
+    margin:12px 0 20px;
+}
+
+.price{
+    color:var(--gold);
+    font-size:13px;
+}
+
+/* ================= OFFER ================= */
+
+.offer{
+    min-height:430px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+
+    background:
+    linear-gradient(rgba(10,7,10,.65),rgba(10,7,10,.82)),
+    url("https://images.unsplash.com/photo-1512496015851-a90fb38ba796?auto=format&fit=crop&w=1800&q=90")
+    center/cover fixed;
+}
+
+.offer h2{
+    font-size:65px;
+    font-weight:400;
+    margin:20px 0;
+}
+
+.offer p{
+    color:#ddd;
+    margin-bottom:28px;
+}
+
+.offer-badge{
+    display:inline-block;
+    padding:8px 18px;
+    border:1px solid var(--gold);
+    color:var(--gold);
+    font-size:11px;
+    letter-spacing:3px;
+}
+
+/* ================= TEAM ================= */
+
+.team{
+    background:var(--cream);
+    color:#20181b;
+}
+
+.team-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:25px;
+}
+
+.team-card{
+    text-align:center;
+    background:#fff;
+    padding-bottom:25px;
+    transition:.4s;
+}
+
+.team-card:hover{
+    transform:translateY(-8px);
+}
+
+.team-card img{
+    width:100%;
+    height:350px;
+    object-fit:cover;
+}
+
+.team-card h3{
+    font-size:25px;
+    font-weight:400;
+    margin:20px 0 5px;
+}
+
+.team-card p{
+    color:#92734b;
+    font-size:12px;
+    letter-spacing:2px;
+}
+
+/* ================= GALLERY ================= */
+
+.gallery{
+    background:#111014;
+}
+
+.gallery-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:12px;
+}
+
+.gallery-item{
+    height:330px;
+    overflow:hidden;
+    cursor:pointer;
+}
+
+.gallery-item img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    transition:.6s;
+}
+
+.gallery-item:hover img{
+    transform:scale(1.08);
+}
+
+/* POPUP */
+
+.lightbox{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.92);
+    z-index:2000;
+    display:none;
+    align-items:center;
+    justify-content:center;
+    padding:30px;
+}
+
+.lightbox.active{
+    display:flex;
+}
+
+.lightbox img{
+    max-width:90%;
+    max-height:85vh;
+    object-fit:contain;
+    border:1px solid var(--gold);
+}
+
+.close{
+    position:absolute;
+    top:25px;
+    right:35px;
+    font-size:40px;
+    color:white;
+    cursor:pointer;
+}
+
+/* ================= REVIEWS ================= */
+
+.reviews{
+    background:var(--cream);
+    color:#21191c;
+}
+
+.review-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:25px;
+}
+
+.review{
+    background:#fff;
+    padding:35px;
+    border:1px solid #eee;
+    transition:.4s;
+}
+
+.review:hover{
+    transform:translateY(-6px);
+}
+
+.stars{
+    color:#c99a50;
+    letter-spacing:4px;
+    margin-bottom:20px;
+}
+
+.review p{
+    color:#655c60;
+    line-height:1.9;
+    font-size:14px;
+}
+
+.review h3{
+    margin-top:22px;
+    font-size:20px;
+    font-weight:400;
+}
+
+/* ================= PRICING ================= */
+
+.pricing{
+    background:#121015;
+}
+
+.price-list{
+    max-width:800px;
+    margin:auto;
+}
+
+.price-row{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:25px 0;
+    border-bottom:1px solid #3a3137;
+}
+
+.price-row h3{
+    font-weight:400;
+    font-size:21px;
+}
+
+.price-row p{
+    color:#888087;
+    font-size:12px;
+    margin-top:6px;
+}
+
+.price-row strong{
+    color:var(--gold);
+    white-space:nowrap;
+}
+
+/* ================= BOOKING ================= */
+
+.booking{
+    background:
+    linear-gradient(rgba(10,8,10,.91),rgba(10,8,10,.94)),
+    url("https://images.unsplash.com/photo-1600948836101-f9ffda59d250?auto=format&fit=crop&w=1800&q=90")
+    center/cover;
+}
+
+.form{
+    max-width:800px;
+    margin:auto;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:18px;
+}
+
+.form input,
+.form select,
+.form textarea{
+    width:100%;
+    padding:17px;
+    background:#1c171c;
+    border:1px solid #51454c;
+    color:white;
+    outline:none;
+    font-family:inherit;
+}
+
+.form input:focus,
+.form select:focus,
+.form textarea:focus{
+    border-color:var(--gold);
+}
+
+.form textarea,
+.form button{
+    grid-column:1/-1;
+}
+
+.form button{
+    justify-self:center;
+    cursor:pointer;
+}
+
+/* ================= CONTACT ================= */
+
+.contact{
+    background:var(--cream);
+    color:#21191c;
+    text-align:center;
+}
+
+.contact-grid{
+    display:flex;
+    justify-content:center;
+    gap:70px;
+    flex-wrap:wrap;
+}
+
+.contact-box h3{
+    color:#a67b42;
+    font-size:23px;
+    font-weight:400;
+    margin-bottom:10px;
+}
+
+.contact-box p{
+    color:#665d60;
+    font-size:13px;
+    line-height:1.9;
+}
+
+/* ================= FOOTER ================= */
+
+footer{
+    background:#090809;
+    padding:50px 8%;
+    text-align:center;
+}
+
+footer .logo{
+    margin-bottom:15px;
+}
+
+footer p{
+    color:#777078;
+    font-size:12px;
+}
+
+.socials{
+    margin:22px 0;
+}
+
+.socials a{
+    margin:0 10px;
+    color:var(--gold);
+    font-size:12px;
+}
+
+/* ================= FLOATING BUTTONS ================= */
+
+.whatsapp{
+    position:fixed;
+    right:22px;
+    bottom:22px;
+    width:58px;
+    height:58px;
+    border-radius:50%;
+    background:#25d366;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    color:white;
+    font-size:25px;
+    z-index:1000;
+    box-shadow:0 8px 25px rgba(0,0,0,.4);
+}
+
+.top-btn{
+    position:fixed;
+    right:22px;
+    bottom:92px;
+    width:42px;
+    height:42px;
+    border:1px solid var(--gold);
+    background:#171318;
+    color:var(--gold);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    z-index:1000;
+    cursor:pointer;
+}
+
+/* ================= SCROLL REVEAL ================= */
+
+.reveal{
+    opacity:0;
+    transform:translateY(40px);
+    transition:1s ease;
+}
+
+.reveal.show{
+    opacity:1;
+    transform:translateY(0);
+}
+
+/* ================= ANIMATION ================= */
+
+@keyframes heroIn{
+    from{
+        opacity:0;
+        transform:translateY(35px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+@keyframes float{
+    from{
+        transform:translateY(0);
+    }
+    to{
+        transform:translateY(40px);
+    }
+}
+
+/* ================= MOBILE ================= */
+
+@media(max-width:900px){
+
+    nav{
+        position:absolute;
+        top:100%;
+        left:0;
+        width:100%;
+        background:#100d11;
+        flex-direction:column;
+        gap:0;
+        display:none;
+        border-top:1px solid #3a3036;
+    }
+
+    nav.active{
+        display:flex;
+    }
+
+    nav a{
+        width:100%;
+        text-align:center;
+        padding:15px;
+    }
+
+    .menu{
+        display:block;
+    }
+
+    .about{
+        grid-template-columns:1fr;
+    }
+
+    .service-grid,
+    .team-grid,
+    .review-grid{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .gallery-grid{
+        grid-template-columns:1fr 1fr;
+    }
+}
+
+@media(max-width:600px){
+
+    header{
+        padding:17px 6%;
+    }
+
+    .logo{
+        font-size:23px;
+    }
+
+    section{
+        padding:80px 6%;
+    }
+
+    .hero{
+        padding:130px 7% 80px;
+        min-height:92vh;
+    }
+
+    .hero h1{
+        font-size:52px;
+    }
+
+    .heading h2{
+        font-size:40px;
+    }
+
+    .about-img{
+        height:380px;
+        margin-right:15px;
+    }
+
+    .about-text h2{
+        font-size:40px;
+    }
+
+    .service-grid,
+    .team-grid,
+    .review-grid,
+    .gallery-grid{
+        grid-template-columns:1fr;
+    }
+
+    .gallery-item{
+        height:300px;
+    }
+
+    .offer h2{
+        font-size:45px;
+    }
+
+    .form{
+        grid-template-columns:1fr;
+    }
+
+    .form textarea,
+    .form button{
+        grid-column:auto;
+    }
+
+    .price-row{
+        gap:15px;
+    }
+
+    .contact-grid{
+        flex-direction:column;
+        gap:35px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+
+<header>
+
+<div class="logo">VELOURA.</div>
+
+<button class="menu" id="menu">☰</button>
+
+<nav id="nav">
+<a href="#home">HOME</a>
+<a href="#about">ABOUT</a>
+<a href="#services">SERVICES</a>
+<a href="#team">TEAM</a>
+<a href="#gallery">GALLERY</a>
+<a href="#reviews">REVIEWS</a>
+<a href="#contact">CONTACT</a>
+<a href="#booking" class="nav-btn">BOOK NOW</a>
+</nav>
+
+</header>
+
+
+<!-- HERO -->
+
+<section class="hero" id="home">
+
+<div class="hero-content">
+
+<div class="tag">LUXURY BEAUTY SALON</div>
+
+<h1>
+Your Beauty.<br>
+Your <span>Signature.</span>
+</h1>
+
+<p>
+Discover an elegant beauty experience created
+for modern women. From beautiful hair to
+glamorous makeup, every detail is designed
+with care.
+</p>
+
+<a href="#booking" class="main-btn">
+BOOK YOUR EXPERIENCE →
+</a>
+
+</div>
+
+<div class="hero-info">
+BEAUTY • STYLE • CONFIDENCE
+</div>
+
+</section>
+
+
+<!-- ABOUT -->
+
+<section class="about" id="about">
+
+<div class="about-img reveal"></div>
+
+<div class="about-text reveal">
+
+<div class="tag">OUR STORY</div>
+
+<h2>
+Where Beauty
+Meets Elegance
+</h2>
+
+<p>
+Veloura is a modern luxury salon created for
+women who love beauty, elegance and
+self-care.
+</p>
+
+<p>
+Our professional team combines creativity,
+modern techniques and personal attention to
+create a beautiful experience for every guest.
+</p>
+
+<a href="#services" class="main-btn">
+DISCOVER SERVICES
+</a>
+
+</div>
+
+</section>
+
+
+<!-- SERVICES -->
+
+<section class="services" id="services">
+
+<div class="heading reveal">
+<span>WHAT WE DO</span>
+<h2>Signature Services</h2>
+</div>
+
+<div class="service-grid">
+
+<div class="service-card reveal">
+<div class="service-img">
+<img src="https://images.unsplash.com/photo-1562322140-8baeececf3df?auto=format&fit=crop&w=900&q=85">
+</div>
+<div class="service-body">
+<h3>Hair Styling</h3>
+<p>Modern cuts, styling and beautiful hair transformations.</p>
+<div class="price">From Rs. 2,000</div>
+</div>
+</div>
+
+<div class="service-card reveal">
+<div class="service-img">
+<img src="https://images.unsplash.com/photo-1487412947147-5cebf100ffc2?auto=format&fit=crop&w=900&q=85">
+</div>
+<div class="service-body">
+<h3>Makeup</h3>
+<p>Elegant makeup for parties, events and special occasions.</p>
+<div class="price">From Rs. 3,500</div>
+</div>
+</div>
+
+<div class="service-card reveal">
+<div class="service-img">
+<img src="https://images.unsplash.com/photo-1600334129128-685c5582fd35?auto=format&fit=crop&w=900&q=85">
+</div>
+<div class="service-body">
+<h3>Facial Care</h3>
+<p>Relaxing skincare experiences designed for a fresh look.</p>
+<div class="price">From Rs. 2,500</div>
+</div>
+</div>
+
+<div class="service-card reveal">
+<div class="service-img">
+<img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=900&q=85">
+</div>
+<div class="service-body">
+<h3>Bridal Makeup</h3>
+<p>Special bridal beauty packages for your unforgettable day.</p>
+<div class="price">From Rs. 15,000</div>
+</div>
+</div>
+
+<div class="service-card reveal">
+<div class="service-img">
+<img src="https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=900&q=85">
+</div>
+<div class="service-body">
+<h3>Hair Spa</h3>
+<p>Nourishing hair treatments for soft and healthy-looking hair.</p>
+<div class="price">From Rs. 3,000</div>
+</div>
+</div>
+
+<div class="service-card reveal">
+<div class="service-img">
+<img src="https://images.unsplash.com/photo-1604654894610-df63bc536371?auto=format&fit=crop&w=900&q=85">
+</div>
+<div class="service-body">
+<h3>Nail Art</h3>
+<p>Creative nail styling, manicure and elegant nail designs.</p>
+<div class="price">From Rs. 1,500</div>
+</div>
+</div>
+
+</div>
+
+</section>
+
+
+<!-- OFFER -->
+
+<section class="offer">
+
+<div class="reveal">
+
+<div class="offer-badge">
+SPECIAL BEAUTY OFFER
+</div>
+
+<h2>
+Glow More.<br>
+Pay Less.
+</h2>
+
+<p>
+Book any two selected beauty services
+and receive a special salon offer.
+</p>
+
+<a href="#booking" class="main-btn">
+CLAIM YOUR APPOINTMENT
+</a>
+
+</div>
+
+</section>
+
+
+<!-- TEAM -->
+
+<section class="team" id="team">
+
+<div class="heading reveal">
+<span>MEET OUR EXPERTS</span>
+<h2>Beauty Specialists</h2>
+</div>
+
+<div class="team-grid">
+
+<div class="team-card reveal">
+<img src="https://images.unsplash.com/photo-1580618672591-eb180b1a973f?auto=format&fit=crop&w=800&q=85">
+<h3>Sarah Khan</h3>
+<p>HAIR STYLIST</p>
+</div>
+
+<div class="team-card reveal">
+<img src="https://images.unsplash.com/photo-1595476108010-b4d1f102b1b1?auto=format&fit=crop&w=800&q=85">
+<h3>Ayesha Noor</h3>
+<p>MAKEUP ARTIST</p>
+</div>
+
+<div class="team-card reveal">
+<img src="https://images.unsplash.com/photo-1595959183082-7bce9a8b6e2a?auto=format&fit=crop&w=800&q=85">
+<h3>Maya Ali</h3>
+<p>BEAUTY SPECIALIST</p>
+</div>
+
+</div>
+
+</section>
+
+
+<!-- GALLERY -->
+
+<section class="gallery" id="gallery">
+
+<div class="heading reveal">
+<span>OUR WORK</span>
+<h2>Beauty Gallery</h2>
+</div>
+
+<div class="gallery-grid">
+
+<div class="gallery-item reveal">
+<img src="https://images.unsplash.com/photo-1512496015851-a90fb38ba796?auto=format&fit=crop&w=900&q=85">
+</div>
+
+<div class="gallery-item reveal">
+<img src="https://images.unsplash.com/photo-1487412947147-5cebf100ffc2?auto=format&fit=crop&w=900&q=85">
+</div>
+
+<div class="gallery-item reveal">
+<img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=900&q=85">
+</div>
+
+<div class="gallery-item reveal">
+<img src="https://images.unsplash.com/photo-1562322140-8baeececf3df?auto=format&fit=crop&w=900&q=85">
+</div>
+
+<div class="gallery-item reveal">
+<img src="https://images.unsplash.com/photo-1600334129128-685c5582fd35?auto=format&fit=crop&w=900&q=85">
+</div>
+
+<div class="gallery-item reveal">
+<img src="https://images.unsplash.com/photo-1604654894610-df63bc536371?auto=format&fit=crop&w=900&q=85">
+</div>
+
+</div>
+
+</section>
+
+
+<!-- LIGHTBOX -->
+
+<div class="lightbox" id="lightbox">
+
+<div class="close" id="close">×</div>
+
+<img id="lightboxImg" src="">
+
+</div>
+
+
+<!-- REVIEWS -->
+
+<section class="reviews" id="reviews">
+
+<div class="heading reveal">
+<span>CLIENT LOVE</span>
+<h2>What Our Guests Say</h2>
+</div>
+
+<div class="review-grid">
+
+<div class="review reveal">
+<div class="stars">★★★★★</div>
+<p>
+"Beautiful atmosphere and wonderful service.
+The whole experience felt very luxurious."
+</p>
+<h3>— Hira</h3>
+</div>
+
+<div class="review reveal">
+<div class="stars">★★★★★</div>
+<p>
+"I loved my makeup and hairstyle. The team
+was professional and very friendly."
+</p>
+<h3>— Sana</h3>
+</div>
+
+<div class="review reveal">
+<div class="stars">★★★★★</div>
+<p>
+"Veloura has such a beautiful environment.
+I would definitely visit again."
+</p>
+<h3>— Maham</h3>
+</div>
+
+</div>
+
+</section>
+
+
+<!-- PRICING -->
+
+<section class="pricing">
+
+<div class="heading reveal">
+<span>PRICE MENU</span>
+<h2>Our Beauty Menu</h2>
+</div>
+
+<div class="price-list reveal">
+
+<div class="price-row">
+<div>
+<h3>Haircut & Styling</h3>
+<p>Personalized styling</p>
+</div>
+<strong>Rs. 2,000</strong>
+</div>
+
+<div class="price-row">
+<div>
+<h3>Party Makeup</h3>
+<p>Elegant event makeup</p>
+</div>
+<strong>Rs. 3,500</strong>
+</div>
+
+<div class="price-row">
+<div>
+<h3>Luxury Facial</h3>
+<p>Relaxing skincare session</p>
+</div>
+<strong>Rs. 2,500</strong>
+</div>
+
+<div class="price-row">
+<div>
+<h3>Hair Spa</h3>
+<p>Deep conditioning treatment</p>
+</div>
+<strong>Rs. 3,000</strong>
+</div>
+
+<div class="price-row">
+<div>
+<h3>Bridal Makeup</h3>
+<p>Luxury bridal package</p>
+</div>
+<strong>Rs. 15,000</strong>
+</div>
+
+</div>
+
+</section>
+
+
+<!-- BOOKING -->
+
+<section class="booking" id="booking">
+
+<div class="heading reveal">
+<span>RESERVE YOUR VISIT</span>
+<h2>Book An Appointment</h2>
+</div>
+
+<form class="form reveal" id="bookingForm">
+
+<input type="text" id="name" placeholder="Your Full Name" required>
+
+<input type="tel" id="phone" placeholder="Phone Number" required>
+
+<select id="service" required>
+<option value="">Choose Service</option>
+<option>Hair Styling</option>
+<option>Professional Makeup</option>
+<option>Facial Care</option>
+<option>Bridal Makeup</option>
+<option>Hair Spa</option>
+<option>Nail Art</option>
+</select>
+
+<input type="date" id="date" required>
+
+<textarea id="message" rows="5" placeholder="Your Message"></textarea>
+
+<button type="submit" class="main-btn">
+SEND BOOKING REQUEST →
+</button>
+
+</form>
+
+</section>
+
+
+<!-- CONTACT -->
+
+<section class="contact" id="contact">
+
+<div class="heading reveal">
+<span>COME VISIT US</span>
+<h2>Let's Stay Connected</h2>
+</div>
+
+<div class="contact-grid reveal">
+
+<div class="contact-box">
+<h3>Location</h3>
+<p>Your Salon Address<br>Karachi, Pakistan</p>
+</div>
+
+<div class="contact-box">
+<h3>Opening Hours</h3>
+<p>Monday – Saturday<br>10:00 AM – 8:00 PM</p>
+</div>
+
+<div class="contact-box">
+<h3>Contact</h3>
+<p>+92 300 0000000<br>hello@veloura.com</p>
+</div>
+
+</div>
+
+</section>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+<div class="logo">VELOURA.</div>
+
+<p>Luxury Beauty Salon</p>
+
+<div class="socials">
+<a href="#contact">Instagram</a>
+<a href="#contact">Facebook</a>
+<a href="#contact">WhatsApp</a>
+</div>
+
+<p>© 2026 Veloura. All Rights Reserved.</p>
+
+</footer>
+
+
+<!-- FLOATING BUTTONS -->
+
+<a class="whatsapp"
+href="https://wa.me/923000000000"
+target="_blank">
+☎
+</a>
+
+<button class="top-btn" id="topBtn">↑</button>
+
+
+<script>
+
+/* ================= MOBILE MENU ================= */
+
+const menu = document.getElementById("menu");
+const nav = document.getElementById("nav");
+
+menu.addEventListener("click", () => {
+
+    nav.classList.toggle("active");
+
+    if(nav.classList.contains("active")){
+        menu.textContent = "×";
+    }else{
+        menu.textContent = "☰";
+    }
+
+});
+
+
+document.querySelectorAll("nav a").forEach(link => {
+
+    link.addEventListener("click", () => {
+
+        nav.classList.remove("active");
+        menu.textContent = "☰";
+
+    });
+
+});
+
+
+/* ================= SCROLL ANIMATION ================= */
+
+const observer = new IntersectionObserver((entries) => {
+
+    entries.forEach(entry => {
+
+        if(entry.isIntersecting){
+
+            entry.target.classList.add("show");
+
+        }
+
+    });
+
+},{
+    threshold:.12
+});
+
+
+document.querySelectorAll(".reveal").forEach(element => {
+
+    observer.observe(element);
+
+});
+
+
+/* ================= GALLERY POPUP ================= */
+
+const galleryImages =
+document.querySelectorAll(".gallery-item img");
+
+const lightbox =
+document.getElementById("lightbox");
+
+const lightboxImg =
+document.getElementById("lightboxImg");
+
+const close =
+document.getElementById("close");
+
+
+galleryImages.forEach(image => {
+
+    image.addEventListener("click", () => {
+
+        lightbox.classList.add("active");
+
+        lightboxImg.src = image.src;
+
+    });
+
+});
+
+
+close.addEventListener("click", () => {
+
+    lightbox.classList.remove("active");
+
+});
+
+
+lightbox.addEventListener("click", (e) => {
+
+    if(e.target === lightbox){
+
+        lightbox.classList.remove("active");
+
+    }
+
+});
+
+
+/* ================= TOP BUTTON ================= */
+
+const topBtn =
+document.getElementById("topBtn");
+
+topBtn.addEventListener("click", () => {
+
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
+
+});
+
+
+/* ================= DATE ================= */
+
+const date =
+document.getElementById("date");
+
+const today =
+new Date().toISOString().split("T")[0];
+
+date.min = today;
+
+
+/* ================= WHATSAPP BOOKING ================= */
+
+document.getElementById("bookingForm")
+.addEventListener("submit", function(e){
+
+    e.preventDefault();
+
+    const name =
+    document.getElementById("name").value;
+
+    const phone =
+    document.getElementById("phone").value;
+
+    const service =
+    document.getElementById("service").value;
+
+    const bookingDate =
+    document.getElementById("date").value;
+
+    const message =
+    document.getElementById("message").value;
+
+
+    /* APNA WHATSAPP NUMBER YAHAN DALO */
+
+    const salonNumber = "923000000000";
+
+
+    const text =
+`Hello Veloura Salon!
+
+I want to book an appointment.
+
+Name: ${name}
+Phone: ${phone}
+Service: ${service}
+Date: ${bookingDate}
+Message: ${message}`;
+
+
+    const url =
+    "https://wa.me/" +
+    salonNumber +
+    "?text=" +
+    encodeURIComponent(text);
+
+
+    window.open(url,"_blank");
+
+});
+
+</script>
+
+</body>
+</html>
